@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { RecaptchaComponent } from './components/recaptcha/recaptcha.component';
+import { CrearCuentaComponent } from './crear-cuenta/crear-cuenta.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    RecaptchaComponent
+    RecaptchaComponent,
+    CrearCuentaComponent
   ],
   imports: [
     BrowserModule,
