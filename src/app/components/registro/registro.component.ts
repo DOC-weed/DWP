@@ -25,13 +25,15 @@ export class RegistroComponent implements OnInit {
   }
   registrarUsuario(myForm: NgForm) {
     if(this.miloco_dele_pa_dentro){
-      this.service.registarUsuario(this.Usuario).then((usuario: any) => {
-        myForm.reset();
-        alert('Registrado correctamente');
+      let xml = this.service.registarUsuario(this.Usuario);
+      let jsonxml = JSON.parse(xml.responseText);  
+      console.log(jsonxml.status);
+      if(jsonxml.status == 'error'){
+        alert(jsonxml.error_message);
+      }else{
         this.router.navigateByUrl('login');
-      }).catch((err: any) => {
-        alert('Algo salio mal');
-      });
+      }
+      
     }else{
       alert('Capcha invalido');
     }
