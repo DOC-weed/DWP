@@ -1,4 +1,4 @@
-import {IUsers} from '../interfaces'
+import {IUsers} from '../interfaces';
 
 export class UserModel implements IUsers {
     first_name: string;
@@ -18,12 +18,12 @@ export class UserModel implements IUsers {
         this.middle_name = user && user.middle_name || '';
         this.last_name = user && user.last_name || '';
         this.phone_number = user && user.phone_number || '';
-        this.address = user && user.address || {
+        this.address = user && user.address ||  {
             city: '',
             state: '',
         };
-        this.email = user && user.email || '',
-        this.password = user && user.password || '';
+        this.email = user && user.email  ||'',
+        this.password = user && user.password||'';
         this.password_confirmation = user && user.password_confirmation || '';
     }
 }
