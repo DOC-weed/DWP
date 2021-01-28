@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: false,
+  urlProd: 'http://35.167.62.109/storeutags/'
 };

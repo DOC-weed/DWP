@@ -1,0 +1,80 @@
+<div class="container my-5">
+    <form class="needs-validation" (ngSubmit)="registrarUsuario(myForm)" #myForm="ngForm">
+        <div class="form-group">
+            <label for="">Nombre(s)</label>
+            <input type="text" class="form-control" name="num" #num="ngModel" [(ngModel)]="Usuario.first_name" [ngClass]="{ 'is-invalid': !num.valid && num.touched,'is-valid': num.valid}"  required>
+            <div class="invalid-feedback">
+                Ingrese un nombre.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Apeido paterno</label>
+            <input type="text" class="form-control" name="nombre" #nombre="ngModel" [(ngModel)]="Usuario.middle_name" [ngClass]="{ 'is-invalid': !nombre.valid && nombre.touched,'is-valid': nombre.valid}" required>
+            <div class="invalid-feedback">
+                Ingrese un apeido.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Apeido materno</label>
+            <input type="text" class="form-control" name="nombre2" #nombre2="ngModel" [(ngModel)]="Usuario.last_name" [ngClass]="{ 'is-invalid': !nombre2.valid && nombre2.touched,'is-valid': nombre2.valid}" required>
+            <div class="invalid-feedback">
+                Ingrese un apeido.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Telefono</label>
+            <input type="number" class="form-control" name="tel" #tel="ngModel" [(ngModel)]="Usuario.phone_number"  [ngClass]="{ 'is-invalid': (!tel.valid && tel.touched)||(tel.value<1000000000||tel.value>9999999999),'is-valid': tel.valid}" maxlength="10" minlength="10" required>
+        </div>
+
+   
+        <div class="form-row" >
+            <div class="form-group col-md-6">
+                <label for="">Ciudad</label>
+               <input type="text" class="form-control" name="city" #city="ngModel" [(ngModel)]="Usuario.address.city" [ngClass]="{ 'is-invalid': !city.valid && city.touched,'is-valid': city.valid}"  required>
+                <div class="invalid-feedback">
+                    Ingrese una ciudad.
+                </div>
+
+            </div>
+            <div class="form-group col-md-6">
+                <label for="">Estado</label>
+               <input type="text" class="form-control" name="state" #state="ngModel" [(ngModel)]="Usuario.address.state" [ngClass]="{ 'is-invalid': !state.valid && state.touched,'is-valid': state.valid}"  required>
+                <div class="invalid-feedback">
+                    Ingrese un estado.
+                </div>
+            </div>
+          
+        </div>
+
+        <div class="form-group">
+            <label for="">Correo electronico</label>
+            <input type="email" class="form-control" placeholder="example@utags.edu.mx" name="correo" #correo="ngModel" [(ngModel)]="Usuario.email" [ngClass]="{ 'is-invalid': !correo.valid && correo.touched,'is-valid': correo.valid}" required>
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="correo.touched&&!regexp.test(correo.value)">
+            Ingrese un correo valido
+        </div>
+        <!--jkhjkhjkhjkhjkhk-->
+
+        <div class="form-group">
+            <label for="">Ingresar Contraseña</label>
+            <input type="password" maxlength="8" minlength="8" class="form-control" name="password1" #password1="ngModel" [(ngModel)]="Usuario.password" [ngClass]="{ 'is-invalid': !password1.valid && password1.touched,'is-valid': password1.valid}" required>
+            <div class="invalid-feedback">
+                Ingrese una contraseña.
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="">Reingresar Contraseña</label>
+            <input type="password" maxlength="8" minlength="8" class="form-control" name="password2" #password2="ngModel" [(ngModel)]="Usuario.password_confirmation" [ngClass]="{ 'is-invalid': !password2.valid && password2.touched,'is-valid': password2.valid}" required>
+            <div class="invalid-feedback">
+                Ingrese una contraseña.
+            </div>
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="password1.value!==password2.value">
+            Las contraseñas no coinciden
+        </div>
+        <button type="submit" class="btn btn-primary " [disabled]="!myForm.valid ">Registrar</button>
+
+    </form>
+
+
+</div>
