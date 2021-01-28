@@ -1,37 +1,37 @@
+<div class="text-center" style="margin-top:30px ;"><h1>Registro</h1></div>
 <div class="container my-5">
     <form class="needs-validation" (ngSubmit)="registrarUsuario(myForm)" #myForm="ngForm">
-        <div class="form-group">
-            <label for="">Nombre(s)</label>
-            <input type="text" class="form-control" name="num" #num="ngModel" [(ngModel)]="Usuario.first_name" [ngClass]="{ 'is-invalid': !num.valid && num.touched,'is-valid': num.valid}"  required>
-            <div class="invalid-feedback">
-                Ingrese un nombre.
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="">Apellido paterno</label>
-            <input type="text" class="form-control" name="nombre" #nombre="ngModel" [(ngModel)]="Usuario.middle_name" [ngClass]="{ 'is-invalid': !nombre.valid && nombre.touched,'is-valid': nombre.valid}" required>
-            <div class="invalid-feedback">
-                Ingrese un apellido.
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="">Apellido materno</label>
-            <input type="text" class="form-control" name="nombre2" #nombre2="ngModel" [(ngModel)]="Usuario.last_name" [ngClass]="{ 'is-invalid': !nombre2.valid && nombre2.touched,'is-valid': nombre2.valid}" required>
-            <div class="invalid-feedback">
-                Ingrese un apellido.
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="">Teléfono</label>
-            <input type="number" class="form-control" name="tel" #tel="ngModel" [(ngModel)]="Usuario.phone_number"  [ngClass]="{ 'is-invalid': (!tel.valid && tel.touched),'is-valid': tel.valid}" maxlength="10" minlength="10" required>
+        <div class="form-row" >
+            <div class="form-group col-md-4">
+                <label for="">Nombre(s)</label>
+                <input type="text" class="form-control" name="num" #num="ngModel" [(ngModel)]="Usuario.first_name" [ngClass]="{ 'is-invalid': !num.valid && num.touched,'is-valid': num.valid}"  required>
                 <div class="invalid-feedback">
-                    
+                    Ingrese un nombre.
                 </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="">Apellido paterno</label>
+                <input type="text" class="form-control" name="nombre" #nombre="ngModel" [(ngModel)]="Usuario.middle_name" [ngClass]="{ 'is-invalid': !nombre.valid && nombre.touched,'is-valid': nombre.valid}" required>
+                <div class="invalid-feedback">
+                    Ingrese un apellido.
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="">Apellido materno</label>
+                <input type="text" class="form-control" name="nombre2" #nombre2="ngModel" [(ngModel)]="Usuario.last_name" [ngClass]="{ 'is-invalid': !nombre2.valid && nombre2.touched,'is-valid': nombre2.valid}" required>
+                <div class="invalid-feedback">
+                    Ingrese un apellido.
+                </div>
+            </div>
+
         </div>
+
+        
+       
 
    
         <div class="form-row" >
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                 <label for="">Ciudad</label>
                <input type="text" class="form-control" name="city" #city="ngModel" [(ngModel)]="Usuario.address.city" [ngClass]="{ 'is-invalid': !city.valid && city.touched,'is-valid': city.valid}"  required>
                 <div class="invalid-feedback">
@@ -39,12 +39,19 @@
                 </div>
 
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                 <label for="">Estado</label>
                <input type="text" class="form-control" name="state" #state="ngModel" [(ngModel)]="Usuario.address.state" [ngClass]="{ 'is-invalid': !state.valid && state.touched,'is-valid': state.valid}"  required>
                 <div class="invalid-feedback">
                     Ingrese un estado.
                 </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="">Teléfono</label>
+                <input type="number" class="form-control" name="tel" #tel="ngModel" [(ngModel)]="Usuario.phone_number"  [ngClass]="{ 'is-invalid': (!tel.valid && tel.touched),'is-valid': tel.valid}" maxlength="10" minlength="10" required>
+                    <div class="invalid-feedback">
+                      Ingrese un teléfono.  
+                    </div>
             </div>
           
         </div>
@@ -60,14 +67,17 @@
 
         <div class="form-group">
             <label for="">Ingresar Contraseña</label>
-            <input type="password" maxlength="16" minlength="8" class="form-control" name="password1" #password1="ngModel" [(ngModel)]="Usuario.password" [ngClass]="{ 'is-invalid': (!password1.valid && password1.touched)||(!pass_confirmation.test(password1.value)),'is-valid': password1.valid}" required>
+            <input type="password" maxlength="16" minlength="8" class="form-control" name="password1" #password1="ngModel" [(ngModel)]="Usuario.password" [ngClass]="{ 'is-invalid': (!password1.valid && password1.touched && !pass_confirmation.test(password1.value)),'is-valid': password1.valid}" required>
             <div class="invalid-feedback">
                 Ingrese una contraseña.
             </div>
         </div>
+        <div class="alert alert-info" role="alert" *ngIf="!pass_confirmation.test(password1.value)">
+            Las contraseña debe incluir una mayúscula, una minúscula, un número y un carácter especial.
+        </div>
         <div class="form-group">
             <label for="">Confirmar Contraseña</label>
-            <input type="password" maxlength="16" minlength="8" class="form-control" name="password2" #password2="ngModel" [(ngModel)]="Usuario.password_confirmation" [ngClass]="{ 'is-invalid': !password2.valid && password2.touched||(!pass_confirmation.test(password1.value)),'is-valid': password2.valid}" required>
+            <input type="password" maxlength="16" minlength="8" class="form-control" name="password2" #password2="ngModel" [(ngModel)]="Usuario.password_confirmation" [ngClass]="{ 'is-invalid': (!password2.valid && password2.touched && !pass_confirmation.test(password1.value)),'is-valid': password2.valid}" required>
             <div class="invalid-feedback">
                 Ingrese una contraseña.
             </div>
@@ -75,12 +85,19 @@
         <div class="alert alert-danger" role="alert" *ngIf="password1.value!==password2.value">
             Las contraseñas no coinciden
         </div>
-        <div class="alert alert-danger" role="alert" *ngIf="password1.touched&&(!pass_confirmation.test(password1.value))">
-            Las contraseña debe incluir una mayuscula, una minuscula y un número.
+        
+        
+        <div class="container">
+            <div class="abs-center" style="display: flex;flex-direction: column;
+            align-items: flex-start;">
+                
+                    <ngx-recaptcha2 #captchaElem [siteKey]='siteKey' (success)="handleSuccess($event)"></ngx-recaptcha2>
+               
+                <button type="submit" class="btn btn-primary  " [disabled]="!myForm.valid ">Registrar</button>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary " [disabled]="!myForm.valid ">Registrar</button>
+      
+       
 
     </form>
-
-
 </div>
