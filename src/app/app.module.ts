@@ -13,6 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RecuperarCuentaComponent } from './components/recuperar-cuenta/recuperar-cuenta.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegistroComponent,
     LoginComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+   RecuperarCuentaComponent
   ],
   imports: [
     FormsModule,

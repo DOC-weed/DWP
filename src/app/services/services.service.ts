@@ -10,13 +10,6 @@ export class ServicesService {
   bul = false;
  
   constructor(private http:HttpClient) { }
-  /*registarUsuario(usuario: User){
-    console.log(usuario);
-    let xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
-    xmlhttp.setRequestHeader('Content-Type', 'application/json');
-    return  xmlhttp.open('POST',this.url + 'security/create_account',false).toPromise();
-  }*/
   registarUsuario(usuario: User){
     console.log(usuario);
     let xmlhttp = new XMLHttpRequest();
@@ -25,9 +18,42 @@ export class ServicesService {
     xmlhttp.setRequestHeader('Content-Type', 'application/json');
     xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
     xmlhttp.send(JSON.stringify(usuario)); 
-    return xmlhttp;
-    
+    return xmlhttp; 
   }
+  recovery(usuario){
+    console.log(usuario);
+    //return this.http.post(this.url+'request_recovery_codePOST', usuario).toPromise();
+    
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+    xmlhttp.open('POST',this.url + 'security/request_recovery_code',false);
+    xmlhttp.setRequestHeader('Content-Type', 'application/json');
+    xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+    xmlhttp.send(JSON.stringify(usuario)); 
+    return xmlhttp; 
+  }
+  validate_recovery(usuario){
+    console.log(usuario);
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+    xmlhttp.open('POST',this.url + 'security/validate_recovery_code',false);
+    xmlhttp.setRequestHeader('Content-Type', 'application/json');
+    xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+    xmlhttp.send(JSON.stringify(usuario)); 
+    return xmlhttp; 
+  }
+  update_password(usuario){
+    console.log(usuario);
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+    xmlhttp.open('POST',this.url + 'security/update_password',false);
+    xmlhttp.setRequestHeader('Content-Type', 'application/json');
+    xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+    xmlhttp.send(JSON.stringify(usuario)); 
+    return xmlhttp; 
+  }
+
+
   callbackFunction(xmlhttp){
     console.log(xmlhttp);
     return xmlhttp;
