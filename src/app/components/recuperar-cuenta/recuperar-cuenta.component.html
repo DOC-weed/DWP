@@ -4,7 +4,7 @@
         <form  class="needs-validation" (ngSubmit)="request_recovery()" #myForm="ngForm">
             <div class="form-row">
                 <div class="form-group col-md-12">
-                    <label for="">Correo eléctronico</label>
+                    <label for="">Correo electrónico</label>
                     <input type="text" class="form-control" name="correo" #correo="ngModel" [(ngModel)]="email.email"  required>
                     <div class="alert alert-danger my-2" role="alert" *ngIf="correo.touched&&!email_confirmation.test(correo.value)">
                         Ingrese un correo valido
@@ -24,7 +24,7 @@
         <form  class="needs-validation" (ngSubmit)="validate_code(code.value)" #myForm1="ngForm">
             <div class="form-row">
                 <div class="form-group col-md-12">
-                    <label for="">Hemos enviado una clave a tu correo, ingresala a continuación.</label>
+                    <label for="">Hemos enviado una clave a tu correo, ingrésala a continuación.</label>
                     <input type="text" class="form-control" name="code" #code="ngModel" [(ngModel)]="codee.email"  required>
                     <div class="invalid-feedback">
                         Ingrese la clave
@@ -38,7 +38,7 @@
         <div class="" style="margin-top:30px ;" *ngIf="container3">
             <form  class="needs-validation" (ngSubmit)="update_pass(password1.value, password2.value)" #myForm2="ngForm">
                 <div class="form-group">
-                    <label for="">Ingresar nueva Contraseña</label>
+                    <label for="">Ingresar nueva contraseña</label>
                     <input type="password" maxlength="16" minlength="8" class="form-control" name="password1" #password1="ngModel" [(ngModel)]="password.password" [ngClass]="{ 'is-invalid': (!password1.valid && password1.touched && !pass_confirmation.test(password1.value)),'is-valid': password1.valid}" required>
                     <div class="invalid-feedback">
                         Ingrese una contraseña.
@@ -48,7 +48,7 @@
                     Las contraseña debe incluir una mayúscula, una minúscula, un número y un carácter especial.
                 </div>
                 <div class="form-group">
-                    <label for="">Confirmar Contraseña</label>
+                    <label for="">Confirmar contraseña</label>
                     <input type="password" maxlength="16" minlength="8" class="form-control" name="password2" #password2="ngModel" [(ngModel)]="password.password_confirmation" [ngClass]="{ 'is-invalid': (!password2.valid && password2.touched && !pass_confirmation.test(password1.value)),'is-valid': password2.valid}" required>
                     <div class="invalid-feedback">
                         Ingrese una contraseña.
