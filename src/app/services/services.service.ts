@@ -22,6 +22,7 @@ export class ServicesService {
   }
   recovery(usuario){
     console.log(usuario);
+    console.log('1');
     //return this.http.post(this.url+'request_recovery_codePOST', usuario).toPromise();
     
     let xmlhttp = new XMLHttpRequest();
@@ -34,6 +35,7 @@ export class ServicesService {
   }
   validate_recovery(usuario){
     console.log(usuario);
+    console.log('2');
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
     xmlhttp.open('POST',this.url + 'security/validate_recovery_code',false);
@@ -44,6 +46,7 @@ export class ServicesService {
   }
   update_password(usuario){
     console.log(usuario);
+    console.log('3');
     let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
     xmlhttp.open('POST',this.url + 'security/update_password',false);

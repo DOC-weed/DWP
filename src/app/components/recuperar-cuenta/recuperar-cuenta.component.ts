@@ -53,7 +53,7 @@ validate_code(code){
   };
   console.log(obj);
 
-    let xml = this.service.recovery(obj);
+    let xml = this.service.validate_recovery(obj);
     let jsonxml = JSON.parse(xml.responseText);  
     console.log(jsonxml.status);
     if(jsonxml.status == 'error'){
