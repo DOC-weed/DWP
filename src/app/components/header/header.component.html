@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       
      
-      <div style="position: relative;left: 50%;" >
+      <div style="position: relative;left: 50%;" *ngIf="!check">
         <button type="button" class="btn btn-light" (click)="goto()">INICIAR SESIÓN</button>
        
       </div>
@@ -16,6 +16,9 @@
       </div>
       <div  style="position: relative;left: 60%;">
           <img src="../../assets/shopping-cart.svg" type="button" >
+      </div>
+      <div style="width: 100%;" >
+        <p style="text-align: right; color: white; font-weight: bold;">{{username}}</p>
       </div>
     </div>
   </nav>

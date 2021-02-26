@@ -21,7 +21,6 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
   login(){
-    console.log(this.check);
     let xml = this.service.loginUser(this.user);
     let jsonxml = JSON.parse(xml.responseText);
     if(jsonxml.status == 'error'){
@@ -37,10 +36,9 @@ export class LoginComponent implements OnInit {
         let cookies = this.cookie.get('session');
         console.log(cookies);
       }
+      this.service.bul = true
       this.router.navigateByUrl('busqueda');
     }
-     
-    
   }
 
 }
