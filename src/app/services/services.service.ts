@@ -55,6 +55,25 @@ export class ServicesService {
     xmlhttp.send(JSON.stringify(usuario)); 
     return xmlhttp; 
   }
+  loginUser(user){
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+    xmlhttp.open('POST',this.url + 'security/login',false);
+    xmlhttp.setRequestHeader('Content-Type', 'application/json');
+    xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+    xmlhttp.send(JSON.stringify(user)); 
+    return xmlhttp; 
+  }
+  validateSession(id){
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+    xmlhttp.open('POST',this.url + 'security/ping ',false);
+    xmlhttp.setRequestHeader('Content-Type', 'application/json');
+    xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+    xmlhttp.send(JSON.stringify(id)); 
+    return xmlhttp; 
+    
+  }
 
 
   callbackFunction(xmlhttp){

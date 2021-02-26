@@ -14,6 +14,8 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RecuperarCuentaComponent } from './components/recuperar-cuenta/recuperar-cuenta.component';
+import { CookieService } from 'ngx-cookie-service';
+import { BusquedaComponent } from './components/busqueda/busqueda.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { RecuperarCuentaComponent } from './components/recuperar-cuenta/recupera
     LoginComponent,
     HeaderComponent,
     FooterComponent,
-   RecuperarCuentaComponent
+   RecuperarCuentaComponent,
+   BusquedaComponent
   ],
   imports: [
     FormsModule,
@@ -35,7 +38,7 @@ import { RecuperarCuentaComponent } from './components/recuperar-cuenta/recupera
     NgxCaptchaModule,
     HttpClientModule
   ],
-  providers: [ServicesService],
+  providers: [ServicesService,CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
