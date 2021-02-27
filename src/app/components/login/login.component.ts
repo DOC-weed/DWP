@@ -4,6 +4,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { domain } from 'process';
 import { Login } from 'src/app/models/login';
 import { ServicesService } from 'src/app/services/services.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-login',
@@ -19,6 +20,8 @@ export class LoginComponent implements OnInit {
   constructor(public service: ServicesService, private cookie: CookieService, public router:Router) { }
 
   ngOnInit(): void {
+    this.validateSesion();
+
   }
   login(){
     let xml = this.service.loginUser(this.user);
@@ -39,6 +42,26 @@ export class LoginComponent implements OnInit {
       this.service.bul = true
       this.router.navigateByUrl('busqueda');
     }
+  }
+  validateSesion(){
+    let sess = this.cookie.getAll()
+    let session_id = {
+      session_id:sess.session
+    };
+    let session = this.service.validateSession(session_id);
+    let jsonxml = JSON.parse(session.responseText);
+    if(jsonxml.error_message == ''){
+      this.router.navigateByUrl('busqueda');
+    }else if(jsonxml.error_message == 'SessionExpired'){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'La sesión ha expirado.'
+      });
+
+    }
+    console.log(this.cookie.getAll());
+    
   }
 
 }

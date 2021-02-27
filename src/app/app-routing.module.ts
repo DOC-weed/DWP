@@ -7,7 +7,7 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { CrearCuentaComponent } from './crear-cuenta/crear-cuenta.component';
 
 const routes: Routes = [
-  {path:'', pathMatch:'full',redirectTo:'registro'},
+  {path:'', pathMatch:'full',redirectTo:'login'},
   {path: 'crear-cuenta', component: CrearCuentaComponent},
   {path:'registro',component:RegistroComponent},
   {path:'login', component:LoginComponent},
