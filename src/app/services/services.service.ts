@@ -10,6 +10,9 @@ export class ServicesService {
   bul = false;
  
   constructor(private http:HttpClient) { }
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
   registarUsuario(usuario: User){
     console.log(usuario);
     let xmlhttp = new XMLHttpRequest();
@@ -74,7 +77,17 @@ export class ServicesService {
     return xmlhttp; 
     
   }
+   // GET METHODS
 
+  getCategories(){
+    return this.http.get(this.url+'catalogs/categories').toPromise();
+  }
+  getAllProducts(data){
+    return this.http.get(this.url +'catalogs/items/by_text/'+data).toPromise()
+  }
+  getEspecificCategory(data){
+    return this.http.get(this.url+'catalogs/items/by_category/'+data).toPromise()
+  }
 
   callbackFunction(xmlhttp){
     console.log(xmlhttp);
