@@ -1,0 +1,18 @@
+mat-card {
+    width: 650px;
+    background-color: white;
+    margin: 10px;
+    color: black;
+}
+
+mat-grid-list{
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+.price{
+    position: absolute;
+    left: 0;
+    top: 0;
+}

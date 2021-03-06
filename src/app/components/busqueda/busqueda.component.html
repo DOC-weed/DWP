@@ -1,2 +1,10 @@
 <h1>busqueda works!</h1>
 
+<div style="max-width: 80%;  margin: auto;">
+    <mat-grid-list cols="2" rowHeight="300px">
+        <mat-grid-tile *ngFor="let product of products">
+            <app-producto-card [product]="product" ></app-producto-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+

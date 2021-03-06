@@ -16,6 +16,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { RecuperarCuentaComponent } from './components/recuperar-cuenta/recuperar-cuenta.component';
 import { CookieService } from 'ngx-cookie-service';
 import { BusquedaComponent } from './components/busqueda/busqueda.component';
+import { ProductoCardComponent } from './components/producto-card/producto-card.component';
+import {MatCardModule} from '@angular/material/card';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,8 @@ import { BusquedaComponent } from './components/busqueda/busqueda.component';
     HeaderComponent,
     FooterComponent,
    RecuperarCuentaComponent,
-   BusquedaComponent
+   BusquedaComponent,
+   ProductoCardComponent
   ],
   imports: [
     FormsModule,
@@ -36,7 +40,9 @@ import { BusquedaComponent } from './components/busqueda/busqueda.component';
     BrowserModule,
     AppRoutingModule,
     NgxCaptchaModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [ServicesService,CookieService],
   bootstrap: [AppComponent]

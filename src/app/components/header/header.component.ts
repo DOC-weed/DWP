@@ -20,6 +20,7 @@ username = localStorage.getItem('fullname');
 
   ngOnInit(): void {
     this.validate();
+    this.check = false
     this.route.events.subscribe(event => {
       this.check = this.service.bul
       this.username = localStorage.getItem('fullname');
