@@ -12,7 +12,9 @@ export class HeaderComponent implements OnInit {
 check = false;
 username = localStorage.getItem('fullname');
 
-  constructor(public route:Router, public service: ServicesService, private cookie: CookieService) { }
+  constructor(public route:Router, public service: ServicesService, private cookie: CookieService) {
+    this.check = false
+   }
 
   ngAfterContentInit(){
     this.check = this.service.bul;

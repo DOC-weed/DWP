@@ -9,8 +9,10 @@ import { ServicesService } from 'src/app/services/services.service';
 export class BusquedaComponent implements OnInit {
 check = false;
 categories : any;
-products : any;
-  constructor( public service : ServicesService) { }
+products : [];
+  constructor( public service : ServicesService) { 
+    this.products = []
+  }
 
   ngOnInit(): void {
     let licencia ='licencia';
@@ -53,8 +55,5 @@ products : any;
       console.log(err);
     })
   }
-
-
-
 
 }
