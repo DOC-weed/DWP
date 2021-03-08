@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ServicesService } from 'src/app/services/services.service';
+
 
 @Component({
   selector: 'app-busqueda',
@@ -12,6 +14,7 @@ categories : any;
 products : [];
   constructor( public service : ServicesService) { 
     this.products = []
+    
   }
 
   ngOnInit(): void {
@@ -21,6 +24,7 @@ products : [];
     this.getEspecificProduct(licencia);
     this.getAllCategories();
     this.getEspecificCategory(cate)
+    
   }
 
   getAllCategories(){

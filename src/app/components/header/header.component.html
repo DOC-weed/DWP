@@ -5,18 +5,28 @@
     </button>
   
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      
+      <div class="col-sm-6 " style="position: relative;left: 19%;">
+        <form class="navbar-form" role="search">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Buscar..." name="q">
+            <div class="input-group-btn">
+                <button class="btn btn-light" type="submit" (click)="getAllProducts()"> BUSCAR</button>
+            </div>
+        </div>
+        </form>
+    </div>
+
+       
+       
      
-      <div style="position: relative;left: 50%;" *ngIf="!check">
+      <div style="position: relative;left: 20%;" *ngIf="!check">
         <button type="button" class="btn btn-light" (click)="goto()">INICIAR SESIÓN</button>
        
       </div>
-      <div style="position: relative;left: 50%;" *ngIf="check" >
+      <div style="position: relative;left: 20%;" *ngIf="check" >
         <button type="button" class="btn btn-danger" (click)="out()">CERRAR SESIÓN</button>
       </div>
-      <div  style="position: relative;left: 60%;">
-          <img src="../../assets/shopping-cart.svg" type="button" >
-      </div>
+      
       <div style="width: 100%;" >
         <p style="text-align: right; color: white; font-weight: bold;">Bienvenido</p>
         <p style="text-align: right; color: white; font-weight: bold;">{{username}}</p>

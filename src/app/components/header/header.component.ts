@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServicesService } from 'src/app/services/services.service';
 import { CookieService } from 'ngx-cookie-service';
+import { $ } from 'protractor';
 
 @Component({
   selector: 'app-header',
@@ -11,24 +12,31 @@ import { CookieService } from 'ngx-cookie-service';
 export class HeaderComponent implements OnInit {
 check = false;
 username = localStorage.getItem('fullname');
+categories : any;
+products : [];
 
   constructor(public route:Router, public service: ServicesService, private cookie: CookieService) {
     this.check = false
+    this.products = []
    }
 
   ngAfterContentInit(){
     this.check = this.service.bul;
+
   }
 
   ngOnInit(): void {
-    this.validate();
     this.check = false
     this.route.events.subscribe(event => {
       this.check = this.service.bul
       this.username = localStorage.getItem('fullname');
-      this.validate();
+      this.validate(
+
+    
+      );
     })
   }
+  
 
   
   goto(){
@@ -41,6 +49,7 @@ username = localStorage.getItem('fullname');
     this.route.navigateByUrl('login');
     this.cookie.deleteAll('../');
     this.service.bul = false
+    
   }
 
 validate(){
@@ -50,6 +59,8 @@ validate(){
       this.service.bul = true;
     }
   }
+
+  
  
 
 }
