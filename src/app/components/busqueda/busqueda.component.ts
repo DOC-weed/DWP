@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { $ } from 'protractor';
 
 import { ServicesService } from 'src/app/services/services.service';
 
@@ -11,22 +12,30 @@ import { ServicesService } from 'src/app/services/services.service';
 export class BusquedaComponent implements OnInit {
 check = false;
 categories : any;
-products : [];
+products:any;
+filterfield= '';
+busquedaTodo = true;
+busquedaModelo = false;
+busquedaPaquete = false;
+busquedaPlan = false;
+busquedaServicio = false;
+
   constructor( public service : ServicesService) { 
-    this.products = []
+   
     
   }
 
   ngOnInit(): void {
     let licencia ='licencia';
     let cate = 'plan'
-    this.getAllProducts();
+    this.products = this.getAllProducts();
     this.getEspecificProduct(licencia);
     this.getAllCategories();
     this.getEspecificCategory(cate)
     
   }
-
+ 
+ 
   getAllCategories(){
     this.service.getCategories().then((info: any) =>{
       this.categories= info.data.categories;

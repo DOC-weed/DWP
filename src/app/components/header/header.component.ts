@@ -59,7 +59,9 @@ validate(){
       this.service.bul = true;
     }
   }
-
+  getAllProducts(){
+    
+  }
   
  
 
