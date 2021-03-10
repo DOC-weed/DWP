@@ -1,44 +1,127 @@
-
-
 <div style="width: 100%;">
-    <div>
-        <div class="row" style="width: 100%; text-align: center; justify-content: center;">
-            <input type="text" class="col-md-5 form-control m-2" placeholder="Buscar" name="filter" [(ngModel)]="filterfield" >
-        </div>
-      
-        <div class="row" style="width: 100%;">
-        
-            <div class="col-md-10" *ngIf="(products) ? (products.length == 0) ? true : false : false">
-                <div style="width: 100%; height: 70vh; display: flex; align-content: center; align-items: center;">
-                    <h2 style="margin: auto;"></h2>
-                </div>
-            </div>
-            <div class="col-sm-2"></div>
-            <div class="col-sm-10 col-md-10 col-xl-10" id="1" >
-                <div  class="my-5" style="text-align: center;" *ngIf="(products | filtro: filterfield).length === 0"><span class="badge badge-danger">No se encontraron productos...</span></div>
-                <div  class="my-5" style="text-align: center;" *ngIf="(products | filtro: filterfield).length > 0"><span class="badge badge-info">Se encontraron {{(products | filtro: filterfield).length}} productos </span></div>
-                <div class="row" *ngIf="busquedaTodo">
-                    
-                   
-                        <div class="col-md-4 " *ngFor="let product of products | filtro:filterfield">
-                            <div class="card p-3 m-3">
-                                <img class="card-img-top" src="{{product.images_small}}" alt="Card image cap">
-                                <div class="card-body">
-                                  <h5 class="card-title">{{product.short_description}}</h5>
-                                  <p class="card-text">{{product.long_description}}</p>
-                                  <span  class="badge badge-primary">$ {{product.price}}</span>
-                                  <span  class="badge badge-warning">{{product.category}}</span>
-                                </div>
-                              </div>
-                        </div>
-                   
-                </div>
-            
-                
-            </div>
-            
-            <div class="col-sm-2 col-md-2 col-xl-2">
-            </div>
-        </div>
+  <div>
+    <div class="row" style="width: 100%; text-align: center; justify-content: center;">
+      <input type="text" class="col-md-5 form-control m-2" placeholder="Buscar" name="filter" [(ngModel)]="filterfield">
     </div>
+
+    <div class="row" style="width: 100%;">
+
+      <div class="col-md-10" *ngIf="(products) ? (products.length == 0) ? true : false : false">
+        <div style="width: 100%; height: 70vh; display: flex; align-content: center; align-items: center;">
+          <h2 style="margin: auto;"></h2>
+        </div>
+      </div>
+      <div class="col-sm-2">
+
+        <mat-card class="category">
+          <h5 class="title">Categorias</h5>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [(ngModel)]="busquedaModulo"
+              (change)="sortByCategory()">
+            <label class="form-check-label" for="flexCheckDefault">
+              Módulo
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" [(ngModel)]="busquedaPlan"
+              (change)="sortByCategory()">
+            <label class="form-check-label" for="flexCheckChecked">
+              Plan
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" [(ngModel)]="busquedaPaquete"
+              (change)="sortByCategory()">
+            <label class="form-check-label" for="flexCheckDefault">
+              Paquete
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"
+              [(ngModel)]="busquedaServicio" (change)="sortByCategory()">
+            <label class="form-check-label" for="flexCheckDefault">
+              Servicio
+            </label>
+          </div>
+        </mat-card>
+      </div>
+      <div class="col-sm-10 col-md-10 col-xl-10" id="1">
+        <div class="my-5" style="text-align: center;"
+          *ngIf="(busquedaTodo && products | filtro: filterfield).length === 0"><span class="badge badge-danger">No se
+            encontraron productos...</span></div>
+        <div class="my-5" style="text-align: center;" *ngIf="(  busquedaTodo && products | filtro: filterfield).length > 0"><span
+            class="badge badge-info">Se encontraron {{(products | filtro: filterfield).length}} productos </span></div>
+
+        <div class="row" *ngIf="busquedaTodo">
+          <div class="col-md-4 " *ngFor="let product of products | filtro:filterfield">
+            <div class="card p-3 m-3">
+              <img class="card-img-top" src="{{product.images_small}}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{product.short_description}}</h5>
+                <p class="card-text">{{product.long_description}}</p>
+                <span class="badge badge-primary">$ {{product.price}}</span>
+                <span class="badge badge-warning">{{product.category}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+                  <!-- Categorias -->
+        <div class="row" *ngIf="busquedaModulo">
+          <div class="col-md-4 " *ngFor="let product of productoModulo | filtro:filterfield">
+            <div class="card p-3 m-3">
+              <img class="card-img-top" src="{{product.images_small}}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{product.short_description}}</h5>
+                <p class="card-text">{{product.long_description}}</p>
+                <span class="badge badge-primary">$ {{product.price}}</span>
+                <span class="badge badge-warning">{{product.category}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="busquedaPlan">
+          <div class="col-md-4 " *ngFor="let product of productoPlan | filtro:filterfield">
+            <div class="card p-3 m-3">
+              <img class="card-img-top" src="{{product.images_small}}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{product.short_description}}</h5>
+                <p class="card-text">{{product.long_description}}</p>
+                <span class="badge badge-primary">$ {{product.price}}</span>
+                <span class="badge badge-warning">{{product.category}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="busquedaPaquete">
+          <div class="col-md-4 " *ngFor="let product of productoPaquete | filtro:filterfield">
+            <div class="card p-3 m-3">
+              <img class="card-img-top" src="{{product.images_small}}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{product.short_description}}</h5>
+                <p class="card-text">{{product.long_description}}</p>
+                <span class="badge badge-primary">$ {{product.price}}</span>
+                <span class="badge badge-warning">{{product.category}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row" *ngIf="busquedaServicio">
+          <div class="col-md-4 " *ngFor="let product of productoServico | filtro:filterfield">
+            <div class="card p-3 m-3">
+              <img class="card-img-top" src="{{product.images_small}}" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">{{product.short_description}}</h5>
+                <p class="card-text">{{product.long_description}}</p>
+                <span class="badge badge-primary">$ {{product.price}}</span>
+                <span class="badge badge-warning">{{product.category}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-2 col-md-2 col-xl-2">
+      </div>
+    </div>
+  </div>
 </div>
