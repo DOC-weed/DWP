@@ -48,4 +48,9 @@ export class ProductComponent implements OnInit {
    }
   }
 
+  changeImg(e){
+    e.preventDefault();
+    document.getElementById('principal').setAttribute('src',e.target.src)
+    }
+
 }
