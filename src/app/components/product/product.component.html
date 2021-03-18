@@ -44,7 +44,19 @@
 </ng-template>
 <div class="row mx-2 my-5">
     <!-- Galeria -->
-    <div class="col-md-5"> </div>
+    <div class="col-md-5">
+        <div class="row mx-2 my-5">
+            <div class="col-md-2" style="width: 100%; background-color: yellow; height: 400px; overflow-y: scroll; margin: 0; padding: 0;">
+                <div *ngFor='let p of product_info[0].images_gallery' style="margin: 10px;">
+                    <img src='{{ p.image }}' alt="" class="img-fluid" (mouseover)="changeImg($event)" id="imagenes_muestra">
+                </div>
+            </div>
+            
+            <div class="col-md-10" style="width: 100%; background-color: lightblue; height: 400px;">
+                <img src="" alt="" id="principal" class="img-fluid">
+            </div>
+        </div>
+    </div>
     <!-- Descripción -->
     <div class="col-md-5"> 
     </div>

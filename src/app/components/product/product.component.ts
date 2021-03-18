@@ -107,5 +107,9 @@ export class ProductComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+  changeImg(e){
+    e.preventDefault();
+    document.getElementById('principal').setAttribute('src',e.target.src)
+    }
 
 }
