@@ -32,7 +32,7 @@ cant = 0;
     this.route.events.subscribe(event => {
       this.check = this.service.bul
       this.username = localStorage.getItem('fullname');
-    
+      this.cant = this.getCar();
       this.validate();
     })
   }
