@@ -20,28 +20,34 @@ export class LoginComponent implements OnInit {
   constructor(public service: ServicesService, private cookie: CookieService, public router:Router) { }
 
   ngOnInit(): void {
-    this.validateSesion();
+    
 
   }
   login(){
-    let xml = this.service.loginUser(this.user);
-    let jsonxml = JSON.parse(xml.responseText);
-    if(jsonxml.status == 'error'){
-      alert(jsonxml.error_message);
-    }else{
-      localStorage.setItem('fullname', jsonxml.data.customer.full_name);
-      localStorage.setItem('session_id', jsonxml.data.session_id);
-      localStorage.setItem('session_expiration_date',jsonxml.data.session_expiration_date);
+    this.service.loginUser(this.user).then((result:any) => {
+      console.log(result);
+      localStorage.setItem('fullname', result.data.customer.full_name);
+      localStorage.setItem('session_id', result.data.session_id);
+      localStorage.setItem('session_expiration_date',result.data.session_expiration_date);
       if(this.check){
-        let date = new Date(jsonxml.data.session_expiration_date);
+        let date = new Date(result.data.session_expiration_date);
         console.log(date);
-        this.cookie.set('session', jsonxml.data.session_id,{expires: date, sameSite: 'Lax'});
+        this.cookie.set('session', result.data.session_id,{expires: date, sameSite: 'Lax'});
         let cookies = this.cookie.get('session');
         console.log(cookies);
       }
+      if(document.location.href === 'http://localhost:4200/login'){
+        
+        this.router.navigateByUrl('busqueda');
+        
+      }
       this.service.bul = true
-      this.router.navigateByUrl('busqueda');
-    }
+      
+    }).catch((err) => {
+      alert(err);
+      
+    });
+    
   }
   validateSesion(){
     let sess = this.cookie.getAll()

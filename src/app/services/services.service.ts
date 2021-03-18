@@ -61,14 +61,9 @@ export class ServicesService {
     xmlhttp.send(JSON.stringify(usuario)); 
     return xmlhttp; 
   }
-  loginUser(user){
-    let xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
-    xmlhttp.open('POST',this.url + 'security/login',false);
-    xmlhttp.setRequestHeader('Content-Type', 'application/json');
-    xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
-    xmlhttp.send(JSON.stringify(user)); 
-    return xmlhttp; 
+  loginUser(user: any){
+    return this.http.post(this.url +'security/login',user).toPromise();
+  
   }
   validateSession(id){
     let xmlhttp = new XMLHttpRequest();
@@ -81,9 +76,10 @@ export class ServicesService {
     
   }
   addToCar(prodcut: any){
-
     return this.http.post(this.url +'cart/add_item', prodcut).toPromise();
-
+  }
+  getCar(session_id:any){
+    return this.http.post(this.url +'cart/get_details', session_id).toPromise();
   }
    // GET METHODS
 
@@ -98,6 +94,12 @@ export class ServicesService {
   }
   getEspecificProduct(id){
     return this.http.get(this.url + 'catalogs/item_details/'+id).toPromise()
+  }
+
+  //DELETE
+  deleteCar(id: any){
+    return this.http.delete(this.url + 'cart/remove_all', id).toPromise();
+
   }
 
   callbackFunction(xmlhttp){

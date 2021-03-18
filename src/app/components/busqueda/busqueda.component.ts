@@ -32,6 +32,7 @@ productoServico: any;
     this.products = this.getAllProducts();
     this.getEspecificCategory('');
     this.categories = this.getAllCategories();
+    
   }
 
   getAllCategories(){

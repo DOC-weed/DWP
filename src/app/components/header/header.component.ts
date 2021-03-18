@@ -14,6 +14,7 @@ check = false;
 username = localStorage.getItem('fullname');
 categories : any;
 products : [];
+cant = 0;
 
   constructor(public route:Router, public service: ServicesService, private cookie: CookieService) {
     this.check = false
@@ -26,14 +27,13 @@ products : [];
   }
 
   ngOnInit(): void {
+    this.getCar();
     this.check = false
     this.route.events.subscribe(event => {
       this.check = this.service.bul
       this.username = localStorage.getItem('fullname');
-      this.validate(
-
     
-      );
+      this.validate();
     })
   }
   
@@ -49,7 +49,6 @@ products : [];
     localStorage.clear();
     this.cookie.deleteAll('../');
     this.service.bul = false
-    
   }
 
 validate(){
@@ -59,7 +58,21 @@ validate(){
       this.service.bul = true;
     }
   }
-  getAllProducts(){
+  getCar(): any{
+    let id = localStorage.getItem('session_id');
+    let obj ={session_id: id}
+    if(id == null){
+      this.cant = 0;
+      return 0;
+    }else{
+      this.service.getCar(obj).then((result:any) => {
+        console.log(result);
+        this.cant = result.data.items_quantity
+        return result.data.items_quantity;
+      }).catch((err) => {
+        
+      });
+    }
     
   }
   
