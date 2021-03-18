@@ -8,8 +8,11 @@ import { environment } from 'src/environments/environment.prod';
 export class ServicesService {
   url = environment.urlProd;
   bul = false;
+  product_id: number;
  
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) { 
+    
+  }
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
@@ -77,6 +80,11 @@ export class ServicesService {
     return xmlhttp; 
     
   }
+  addToCar(prodcut: any){
+
+    return this.http.post(this.url +'cart/add_item', prodcut).toPromise();
+
+  }
    // GET METHODS
 
   getCategories(){
@@ -87,6 +95,9 @@ export class ServicesService {
   }
   getEspecificCategory(data){
     return this.http.get(this.url+'catalogs/items/by_category/'+data).toPromise()
+  }
+  getEspecificProduct(id){
+    return this.http.get(this.url + 'catalogs/item_details/'+id).toPromise()
   }
 
   callbackFunction(xmlhttp){

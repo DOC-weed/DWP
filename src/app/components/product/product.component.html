@@ -1,0 +1,20 @@
+<div class="row mx-2 my-5">
+    <!-- Galeria -->
+    <div class="col-md-5"> </div>
+    <!-- Descripción -->
+    <div class="col-md-5"> 
+    </div>
+    <!-- Agregar al carrito-->
+    <div class="col-md-2 "> 
+        <div class="border border-4 border-success p-3 text-center rounded">
+            <h5 >$ {{product_info[0].price}}</h5>
+            <form action="" (ngSubmit)="addtoCar()"> 
+                <label for="">Cantidad</label>
+                <input class="form-control" name="cant" [(ngModel)]="cantidad" type="number" value="1">
+                <button type="submit" class="btn btn-warning mt-1 w-100" > Agregar al carrito</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+

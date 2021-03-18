@@ -39,14 +39,14 @@ products : [];
   
 
   
-  goto(){
+  goto(e){
+    e.preventDefault();
     this.route.navigateByUrl('login');
     this.service.bul = true
   }
 
-  out(){
+  out(e){
     localStorage.clear();
-    this.route.navigateByUrl('login');
     this.cookie.deleteAll('../');
     this.service.bul = false
     

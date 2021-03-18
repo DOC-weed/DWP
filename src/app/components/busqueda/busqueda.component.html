@@ -1,5 +1,5 @@
 <div style="width: 100%;">
-  <div>
+  <div class="pt-5">
     <div class="row" style="width: 100%; text-align: center; justify-content: center;">
       <input type="text" class="col-md-5 form-control m-2" placeholder="Buscar" name="filter" [(ngModel)]="filterfield">
     </div>
@@ -55,9 +55,9 @@
         <div class="row" *ngIf="busquedaTodo">
           <div class="col-md-4 " *ngFor="let product of products | filtro:filterfield">
             <div class="card p-3 m-3">
-              <img class="card-img-top" src="{{product.images_small}}" alt="Card image cap">
+              <a [routerLink]="['/producto',product.product_id]"><img class="card-img-top" src="{{product.images_small}}" alt="Card image cap"></a>
               <div class="card-body">
-                <h5 class="card-title">{{product.short_description}}</h5>
+                <h5 class="card-title"><a [routerLink]="['/producto',product.product_id]">{{product.short_description}}</a></h5>
                 <p class="card-text">{{product.long_description}}</p>
                 <span class="badge badge-primary">$ {{product.price}}</span>
                 <span class="badge badge-warning">{{product.category}}</span>

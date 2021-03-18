@@ -1,35 +1,25 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a href="http://localhost:4200/registro"><img src="../../assets/Universidad-Tecnológica-de-Aguascalientes.png" style="height: 60px; position: relative;left: 5%;" ></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a href="http://localhost:4200/busqueda" class="navbar-brand"><img src="../../assets/Universidad-Tecnológica-de-Aguascalientes.png" width="200px"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <div class="col-sm-6 " style="position: relative;left: 19%; visibility: hidden;">
-        <form class="navbar-form" role="search">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Buscar..." name="q">
-            <div class="input-group-btn">
-                <button class="btn btn-light" type="submit" (click)="getAllProducts()"> BUSCAR</button>
-            </div>
-        </div>
-        </form>
+
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a style="color: white; font-weight: bold;" >Bienvenido   </a>
+        </li>
+        <li class="nav-item active">
+          <a style="color: white; font-weight: bold;"> {{username}}</a>
+        </li>
+        
+      </ul>
+      <div class="navbar-text" *ngIf="!check">
+        <a href="#" (click)="goto($event)" ><span class="iniciar">Iniciar sesión</span></a>
+      </div>
+      <div class="navbar-text" *ngIf="check" >
+        <a href="#" (click)="out($event)" ><span class="cerrar">Cerrar sesión</span></a>
+      </div>
     </div>
 
-       
-       
-     
-      <div style="position: relative;left: 20%;" *ngIf="!check">
-        <button type="button" class="btn btn-light" (click)="goto()">INICIAR SESIÓN</button>
-       
-      </div>
-      <div style="position: relative;left: 20%;" *ngIf="check" >
-        <button type="button" class="btn btn-danger" (click)="out()">CERRAR SESIÓN</button>
-      </div>
-      
-      <div style="width: 100%;" >
-        <p style="text-align: right; color: white; font-weight: bold;">Bienvenido</p>
-        <p style="text-align: right; color: white; font-weight: bold;">{{username}}</p>
-      </div>
-    </div>
   </nav>

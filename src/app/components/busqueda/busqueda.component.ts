@@ -98,4 +98,9 @@ productoServico: any;
       this.productoServico = res;
     }
   }
+  viewProduct(id, e){
+    e.preventDefault();
+    this.service.product_id = id;
+    console.log(this.service.product_id);
+  }
 }

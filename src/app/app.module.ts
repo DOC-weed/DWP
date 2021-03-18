@@ -20,6 +20,8 @@ import { ProductoCardComponent } from './components/producto-card/producto-card.
 import {MatCardModule} from '@angular/material/card';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { FiltroPipe } from './pipes/filtro.pipe';
+import { NgbAlertModule, NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
+import { ProductComponent } from './components/product/product.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,8 @@ import { FiltroPipe } from './pipes/filtro.pipe';
    RecuperarCuentaComponent,
    BusquedaComponent,
    ProductoCardComponent,
-   FiltroPipe
+   FiltroPipe,
+   ProductComponent
   ],
   imports: [
     FormsModule,
@@ -44,7 +47,10 @@ import { FiltroPipe } from './pipes/filtro.pipe';
     NgxCaptchaModule,
     HttpClientModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    NgbModule,
+    NgbPaginationModule,
+    NgbAlertModule
   ],
   providers: [ServicesService,CookieService],
   bootstrap: [AppComponent]

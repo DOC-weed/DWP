@@ -1,0 +1,12 @@
+.iniciar {
+color: white;
+background-color:#5BA9F8;
+border-radius: 5px;
+padding: 3px;
+}
+.cerrar {
+    color: white;
+    background-color:red;
+    border-radius: 5px;
+    padding: 3px;
+}
