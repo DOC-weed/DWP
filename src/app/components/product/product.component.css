@@ -1,0 +1,32 @@
+
+#imagenes_muestra{
+    width: 100%; 
+    background-color: #DBDBDB;
+    overflow-y:scroll; 
+    padding: 0;
+    position: sticky;
+    top: 0;
+    height: 450px;
+    overflow-y: scroll;
+    border: 1px solid #909090;
+}
+#imagenes_muestra::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+#imagenes_muestra::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px grey; 
+    border-radius: 10px;
+}
+
+/* Handle */
+#imagenes_muestra::-webkit-scrollbar-thumb {
+    background: rgb(7, 7, 7); 
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+#imagenes_muestra::-webkit-scrollbar-thumb:hover {
+    background: #009eb3; 
+}
