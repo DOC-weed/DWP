@@ -65,7 +65,7 @@
         <div class="row" *ngIf="busquedaModulo">
           <div class="col-md-4 " *ngFor="let product of productoModulo | filtro:filterfield">
             <div class="card p-3 m-3">  
-              <img class="card-img-top" src="{{product.images_small}}" alt="Card image cap">
+              <a [routerLink]="['/producto',product.product_id]"><img class="card-img-top" src="{{product.images_small}}" alt="Card image cap"></a>
               <div class="card-body">
                 <h5 class="card-title">{{product.short_description}}</h5>
                 <p class="card-text">{{product.long_description}}</p>
@@ -78,7 +78,7 @@
         <div class="row" *ngIf="busquedaPlan">
           <div class="col-md-4 " *ngFor="let product of productoPlan | filtro:filterfield">
             <div class="card p-3 m-3">
-              <img class="card-img-top" src="{{product.images_small}}" alt="Card image cap">
+              <a [routerLink]="['/producto',product.product_id]"><img class="card-img-top" src="{{product.images_small}}" alt="Card image cap"></a>
               <div class="card-body">
                 <h5 class="card-title">{{product.short_description}}</h5>
                 <p class="card-text">{{product.long_description}}</p>
@@ -91,7 +91,7 @@
         <div class="row" *ngIf="busquedaPaquete">
           <div class="col-md-4 " *ngFor="let product of productoPaquete | filtro:filterfield">
             <div class="card p-3 m-3">
-              <img class="card-img-top" src="{{product.images_small}}" alt="Card image cap">
+              <a [routerLink]="['/producto',product.product_id]"><img class="card-img-top" src="{{product.images_small}}" alt="Card image cap"></a>
               <div class="card-body">
                 <h5 class="card-title">{{product.short_description}}</h5>
                 <p class="card-text">{{product.long_description}}</p>
@@ -104,7 +104,7 @@
         <div class="row" *ngIf="busquedaServicio">
           <div class="col-md-4 " *ngFor="let product of productoServico | filtro:filterfield">
             <div class="card p-3 m-3">
-              <img class="card-img-top" src="{{product.images_small}}" alt="Card image cap">
+              <a [routerLink]="['/producto',product.product_id]"><img class="card-img-top" src="{{product.images_small}}" alt="Card image cap"></a>
               <div class="card-body">
                 <h5 class="card-title">{{product.short_description}}</h5>
                 <p class="card-text">{{product.long_description}}</p>
@@ -115,7 +115,6 @@
           </div>
         </div>
       </div>
-
       <div class="col-sm-2 col-md-2 col-xl-2">
       </div>
     </div>

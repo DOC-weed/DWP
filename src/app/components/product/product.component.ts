@@ -12,7 +12,7 @@ import { ServicesService } from 'src/app/services/services.service';
 })
 export class ProductComponent implements OnInit {
 
-  product_info: any;
+  product_info: any = [];
   cantidad = 1;
   product_id;
   closeResult = '';
@@ -40,10 +40,10 @@ export class ProductComponent implements OnInit {
 
   addtoCar(content){
     console.log(localStorage.getItem('session_id'))
-  
-   if(localStorage.getItem('session_id') == null ){
-    this.open(content);
-   } else {
+    const id = localStorage.getItem('session_id');
+    if(localStorage.getItem('session_id') == null ){
+      this.open(content);
+    } else {
     let producto_info ={
       session_id : localStorage.getItem('session_id'),
       item_id:this.product_id,
@@ -53,6 +53,11 @@ export class ProductComponent implements OnInit {
       console.log(res);
     }).catch(err=>{
       console.log(err);
+    })
+    let obj ={session_id: id}
+    this.service.getCar(obj).then((res: any) => {
+      this.service.cantidad = res.data.items_quantity
+      window.location.reload();
     })
    }
   }
