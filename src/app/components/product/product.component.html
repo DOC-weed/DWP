@@ -57,6 +57,7 @@
                 <div *ngFor='let p of product_info[0].images_gallery' style="margin: 10px; vertical-align: center;">
                     <img src='{{ p.image }}' alt="" class="img-fluid" (mouseover)="changeImg($event)">
                 </div>
+                
             </div>
 
             <div class="col-md-9" style="width: 100%;
@@ -68,7 +69,7 @@
             border: 1px solid #909090;
             margin-left: 10px;">
                 <div>
-                    <img src="{{product_info[0].images_large}}" alt="" id="principal" width="400px" style="margin: 10px;">
+                    <img src="{{product_info[0].images_large}}" alt="" class="img-fluid" id="principal" style="margin: auto;">
                 </div>
             </div>
         </div>
