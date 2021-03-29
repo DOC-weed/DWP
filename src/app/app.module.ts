@@ -22,6 +22,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { FiltroPipe } from './pipes/filtro.pipe';
 import { NgbAlertModule, NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductComponent } from './components/product/product.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ProductComponent } from './components/product/product.component';
    BusquedaComponent,
    ProductoCardComponent,
    FiltroPipe,
-   ProductComponent
+   ProductComponent,
+   CartComponent
   ],
   imports: [
     FormsModule,

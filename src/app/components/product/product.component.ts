@@ -93,6 +93,7 @@ export class ProductComponent implements OnInit {
     let obj = {session_id: id}
     this.service.deleteCar(obj).then((res)=>{
       console.log('carrito borrado');
+      console.log(res);
     }).catch(err => {
       console.log('no paso nada');
     });

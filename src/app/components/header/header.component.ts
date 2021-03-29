@@ -66,7 +66,7 @@ validate(){
       return 0;
     }else{
       this.service.getCar(obj).then((result:any) => {
-        console.log(result);
+      
         this.cant = result.data.items_quantity
         return result.data.items_quantity;
       }).catch((err) => {
