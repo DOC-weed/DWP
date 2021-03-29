@@ -9,7 +9,8 @@ export class ServicesService {
   url = environment.urlProd;
   bul = false;
   product_id: number;
- 
+  cantidad = 0;
+
   constructor(private http:HttpClient) { 
     
   }
