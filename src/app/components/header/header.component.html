@@ -14,8 +14,11 @@
         </li>
         
       </ul>
-      <div class="navbar-text" >
-        <a href=""><span class="badge badge-warning p-3 mx-3">{{cant }} Carrito <i class="fas fa-shopping-cart"></i></span></a>
+      <div class="navbar-text" *ngIf="!cartCheck" >
+        <a href="http://localhost:4200/cart"><span class="badge badge-warning p-3 mx-3"> {{_cartCantidad}} Carrito <i class="fas fa-shopping-cart"></i></span></a>
+      </div>
+      <div class="navbar-text" *ngIf="cartCheck">
+        <a href="http://localhost:4200/cart"><span class="badge badge-warning p-3 mx-3"> {{cant}} Carrito <i class="fas fa-shopping-cart"></i></span></a>
       </div>
       <div class="navbar-text" *ngIf="!check">
         <a href="#" (click)="goto($event)" ><span class="iniciar">Iniciar sesión</span></a>

@@ -76,13 +76,20 @@ export class ServicesService {
     return xmlhttp; 
     
   }
+  //PUT METHODS
+  updateCart(obj: any){
+    return this.http.put(this.url+'cart/update_item',obj).toPromise();
+    
+
+  }
+  // GET METHODS
   addToCar(prodcut: any){
     return this.http.post(this.url +'cart/add_item', prodcut).toPromise();
   }
   getCar(session_id:any){
     return this.http.post(this.url +'cart/get_details', session_id).toPromise();
   }
-   // GET METHODS
+   
 
   getCategories(){
     return this.http.get(this.url+'catalogs/categories').toPromise();
@@ -98,8 +105,25 @@ export class ServicesService {
   }
 
   //DELETE
-  deleteCar(id: any){
-    return this.http.delete(this.url + 'cart/remove_all', id).toPromise();
+  deleteCar( obj){
+    //return this.http.delete(this.url + 'cart/remove_item/' , obj).toPromise();
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+    xmlhttp.open('DELETE',this.url + 'cart/remove_all',false);
+    xmlhttp.setRequestHeader('Content-Type', 'application/json');
+    xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+    xmlhttp.send(JSON.stringify(obj)); 
+    return xmlhttp; 
+  }
+  deleteOne( id){
+    //return this.http.delete(this.url + 'cart/remove_item/' , obj).toPromise();
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+    xmlhttp.open('DELETE',this.url + 'cart/remove_item',false);
+    xmlhttp.setRequestHeader('Content-Type', 'application/json');
+    xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+    xmlhttp.send(JSON.stringify(id)); 
+    return xmlhttp; 
 
   }
 

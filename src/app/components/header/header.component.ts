@@ -1,39 +1,47 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServicesService } from 'src/app/services/services.service';
 import { CookieService } from 'ngx-cookie-service';
-import { $ } from 'protractor';
+import { $, EventEmitter } from 'protractor';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
+
 export class HeaderComponent implements OnInit {
-check = false;
+  @Input()
+  public _cartCantidad: '';
+  public get cartCantidad(): '' {
+    return this._cartCantidad;
+  }
+  public set cartCantidad(value: '') {
+    this._cartCantidad = value;
+  }
+
+check :boolean;
+cartCheck:boolean;
 username = localStorage.getItem('fullname');
 categories : any;
 products : [];
 cant = 0;
 
   constructor(public route:Router, public service: ServicesService, private cookie: CookieService) {
-    this.check = false
+  
     this.products = []
    }
 
-  ngAfterContentInit(){
-    this.check = this.service.bul;
-  }
+  
 
   ngOnInit(): void {
     this.getCar();
-    this.check = false
+    this.validate();
     this.route.events.subscribe(event => {
-      this.getCar();
-      this.check = this.service.bul;
       this.username = localStorage.getItem('fullname');
       this.validate();
     })
+  
   }
   
 
@@ -41,20 +49,20 @@ cant = 0;
   goto(e){
     e.preventDefault();
     this.route.navigateByUrl('login');
-    this.service.bul = true
+    this.check = true
   }
 
   out(e){
     localStorage.clear();
     this.cookie.deleteAll('../');
-    this.service.bul = false
+    this.check = false
   }
 
 validate(){
     if(localStorage.getItem('session_id')== undefined || localStorage.getItem('session_id')== ''){
-      this.service.bul = false;
+      this.check = false;
     }else{
-      this.service.bul = true;
+      this.check = true;
     }
   }
   getCar(): any{
@@ -65,9 +73,18 @@ validate(){
       return 0;
     }else{
       this.service.getCar(obj).then((result:any) => {
-      
-        this.cant = result.data.items_quantity
-        return result.data.items_quantity;
+        if( this.route.url == '/cart'){
+          this.cartCheck = false;
+          console.log('esto es el cart');
+          this.cant = parseInt(this._cartCantidad)//result.data.items_quantity
+          return this._cartCantidad //result.data.items_quantity;
+        }else{
+          this.cartCheck = true;
+          console.log('esto no es cart');
+          this.cant = result.data.items_quantity
+          return result.data.items_quantity;
+        }
+        
       }).catch((err) => {
         
       });

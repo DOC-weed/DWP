@@ -1,1 +1,57 @@
-<p>cart works!</p>
+<app-header [_cartCantidad]="cantidadCart"></app-header>
+<div class="m-5 p-5 text-center" *ngIf="!emptyCart">
+    <h2>Oh! Tu carrito esta vacio!</h2>
+    <button class="btn btn-warning" (click)="backStore()">Volver a la tienda</button>
+</div>
+<div class="row mx-2 my-5" *ngIf="emptyCart">
+    <a href="http://localhost:4200/busqueda">Volver a la tienda</a>
+    <h2>Carrtio de compras</h2>
+    <div class="col-md-10">
+       
+        <table class="">
+            <tr class="bg-success"> 
+                <th style="width: 800px;" class="px-1 ">Producto/servicio</th>
+                <th class="px-1">P. Unitario</th>
+                <th class="px-1">Cantidad</th>
+                <th class="px-1">Sub Total</th>
+            </tr>
+            <tr *ngFor="let info of cartDetails" class="py-2">
+                <td style="width: 800px;" >
+                    <div class="row" >
+                        <div style="width: 100px;height: 176px; display:flex; align-items: center;justify-content: center;" class="align-middle">
+                           <a href="#" (click)="deleteOne(info.product_id, $event)"> <i class="fas fa-trash" style="color: red;"></i></a> 
+                        </div>
+                        <div style="width: 200px;" >
+                            <img style="width: 100%;" src="{{info.images_small}}" alt="">
+                        </div>
+                        <div style="width: 500px;">
+                            <h2>{{info.short_description}}</h2>
+                            <p>{{info.long_description}}</p>
+                        </div>
+                    </div>
+                    
+                </td>
+                <td>
+                    <p> $ {{info.price}}</p>
+                </td>
+                <td>
+                    <input type="number" name="cantidad" #cantidad (change)="actualizarCarrito(cantidad.value, info.product_id)" min="1" value="{{info.quantity}}">
+                </td>
+                <td>
+                    <p>$ {{info.sub_total}}</p>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-2 ">
+        <div class="border border-4 border-success p-3 text-center rounded">
+            <h4>Tu carrito</h4>
+                <label for="" class="form-label">Sub Total: ${{cartTotal.data.sub_total}} </label><br>
+                <label for="" class="form-label">IVA: ${{cartTotal.data.taxes}}</label><br>
+                <label for="" class="form-label">Total: ${{cartTotal.data.total}}</label><br>
+                <button type="button" class="btn btn-warning mt-1 w-100"> Proceder a pagar</button>
+               <button type="button" class="btn btn-warning mt-1 w-100" (click)="delete()" >Borrar carrito</button> 
+            
+    </div>
+</div>
