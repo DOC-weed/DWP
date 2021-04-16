@@ -1,0 +1,29 @@
+<app-header ></app-header>
+<div class="p-3">
+    <a href="http://localhost:4200/busqueda">Volver a la tienda</a>
+    <h2>Historial de Pedidos</h2>
+</div>
+<div class="container">
+    <table class="table table-striped">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Fecha de compra</th>
+            <th scope="col">Total</th>
+            <th scope="col">Método de pago </th>
+            <th scope="col">Estatus</th>
+            <th scope="col">Comentarios</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let info of ordersObj; ">
+          <tr>
+            <th scope="row">{{info.date_order}}</th>
+            <td>$ {{info.total}}</td>
+            <td>paypal</td>
+            <td>{{info.status}}</td>
+            <td>{{info.comments}}</td>
+          </tr>
+        </tbody>
+      </table>
+      
+    
+</div>

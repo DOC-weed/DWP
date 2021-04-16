@@ -76,6 +76,28 @@ export class ServicesService {
     return xmlhttp; 
     
   }
+
+  createOrder(order){
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+    xmlhttp.open('POST',this.url + 'order/create ',false);
+    xmlhttp.setRequestHeader('Content-Type', 'application/json');
+    xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+    xmlhttp.send(JSON.stringify(order)); 
+    return xmlhttp; 
+  }
+  getOrders(id){
+    let xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+    xmlhttp.open('POST',this.url + 'order/get_orders ',false);
+    xmlhttp.setRequestHeader('Content-Type', 'application/json');
+    xmlhttp.onreadystatechange = this.callbackFunction(xmlhttp);
+    xmlhttp.send(JSON.stringify(id)); 
+    return xmlhttp; 
+    
+  }
+
+
   //PUT METHODS
   updateCart(obj: any){
     return this.http.put(this.url+'cart/update_item',obj).toPromise();
@@ -103,6 +125,7 @@ export class ServicesService {
   getEspecificProduct(id){
     return this.http.get(this.url + 'catalogs/item_details/'+id).toPromise()
   }
+  
 
   //DELETE
   deleteCar( obj){

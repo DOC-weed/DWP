@@ -10,10 +10,11 @@
           <a style="color: white; font-weight: bold;" >Bienvenido   </a>
         </li>
         <li class="nav-item active">
-          <a style="color: white; font-weight: bold;"> {{username}}</a>
+          <a href="http://localhost:4200/orders" style="color: white; font-weight: bold;"> {{username}}</a>
         </li>
         
       </ul>
+      
       <div class="navbar-text" *ngIf="!cartCheck" >
         <a href="http://localhost:4200/cart"><span class="badge badge-warning p-3 mx-3"> {{_cartCantidad}} Carrito <i class="fas fa-shopping-cart"></i></span></a>
       </div>

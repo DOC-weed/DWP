@@ -84,5 +84,8 @@ emptyCart:boolean;
       console.log(err);
     })
   }
+  gotoCheck(){
+    this.route.navigateByUrl('checkout');
+  }
 
 }

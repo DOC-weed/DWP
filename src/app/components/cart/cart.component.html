@@ -8,7 +8,7 @@
     <h2>Carrtio de compras</h2>
     <div class="col-md-10">
        
-        <table class="">
+        <table>
             <tr class="bg-success"> 
                 <th style="width: 800px;" class="px-1 ">Producto/servicio</th>
                 <th class="px-1">P. Unitario</th>
@@ -50,7 +50,7 @@
                 <label for="" class="form-label">Sub Total: ${{cartTotal.data.sub_total}} </label><br>
                 <label for="" class="form-label">IVA: ${{cartTotal.data.taxes}}</label><br>
                 <label for="" class="form-label">Total: ${{cartTotal.data.total}}</label><br>
-                <button type="button" class="btn btn-warning mt-1 w-100"> Proceder a pagar</button>
+                <button type="button" (click)="gotoCheck()" class="btn btn-warning mt-1 w-100"> Proceder a pagar</button>
                <button type="button" class="btn btn-warning mt-1 w-100" (click)="delete()" >Borrar carrito</button> 
             
     </div>

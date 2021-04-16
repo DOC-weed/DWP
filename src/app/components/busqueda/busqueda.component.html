@@ -1,9 +1,17 @@
 <app-header></app-header>
 <div style="width: 100%;">
   <div class="pt-5">
-    <div class="row" style="width: 100%; text-align: center; justify-content: center;">
-      <input type="text" class="col-md-5 form-control m-2" placeholder="Buscar" name="filter" [(ngModel)]="filterfield">
-    </div>
+  
+      <form action="" (ngSubmit)="Buscar(filter.value)">
+        <div class="row" style="width: 100%; text-align: center; justify-content: center; display: flex;">
+        <input type="text" class="col-md-3 form-control m-2" placeholder="Buscar" name="filter" #filter>
+        <button type="submit" style="height: 40px;margin-top: 9px;width: 5px;" class="col-md-1 btn-sm btn-primary" ><i class="fa fa-search" aria-hidden="true"></i></button>
+      </div>
+
+      </form>
+      
+      
+  
 
     <div class="row" style="width: 100%;">
 

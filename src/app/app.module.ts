@@ -23,6 +23,9 @@ import { FiltroPipe } from './pipes/filtro.pipe';
 import { NgbAlertModule, NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './components/cart/cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ThanksComponent } from './components/thanks/thanks.component';
+import { OrdersComponent } from './components/orders/orders.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { CartComponent } from './components/cart/cart.component';
    ProductoCardComponent,
    FiltroPipe,
    ProductComponent,
-   CartComponent
+   CartComponent,
+   CheckoutComponent,
+   ThanksComponent,
+   OrdersComponent
   ],
   imports: [
     FormsModule,

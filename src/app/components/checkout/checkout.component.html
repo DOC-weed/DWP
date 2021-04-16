@@ -1,0 +1,43 @@
+<app-header ></app-header>
+
+
+	
+<div class="p-3">
+    <a href="http://localhost:4200/busqueda">Volver a la tienda</a>
+    <h2>Detalles de compras</h2>
+</div>
+<div class="row w-100 p-2 mb-5 bg-light">
+    <div class="col-md-9 row ">
+        <div class="col-md-9" > 
+            <h4>Resumen de productos y servicios</h4>
+            <div *ngFor="let data of carDetails">
+                <p>{{data.quantity}} x {{data.short_description}}</p>
+
+            </div>
+            
+        </div>
+        <div class="col-md-3 row">
+            <h4>Total de tu compra</h4>
+            <div class="col">
+                <p>Sub Total</p>
+                <p>IVA</p>
+                <p>Total</p>
+            </div>
+            <div class="col">
+                <p>$ {{carTotal.data.sub_total}}</p>
+                <p>$ {{carTotal.data.taxes}}</p>
+                <p>$ {{carTotal.data.total}}</p>
+            </div>
+
+        </div>
+    </div>
+    <div class="col-md-3 ">
+        <h4>Opciones de pago</h4>
+        <div class="">
+            	
+	        <div #paypal ></div>
+        </div>
+        
+
+    </div>
+</div>

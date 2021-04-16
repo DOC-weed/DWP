@@ -104,4 +104,7 @@ productoServico: any;
     this.service.product_id = id;
     console.log(this.service.product_id);
   }
+  Buscar(text){
+    this.filterfield = text;
+  }
 }

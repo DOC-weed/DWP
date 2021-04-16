@@ -26,6 +26,7 @@ username = localStorage.getItem('fullname');
 categories : any;
 products : [];
 cant = 0;
+filterfield = '';
 
   constructor(public route:Router, public service: ServicesService, private cookie: CookieService) {
   

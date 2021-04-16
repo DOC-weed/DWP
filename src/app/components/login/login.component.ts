@@ -44,7 +44,12 @@ export class LoginComponent implements OnInit {
       this.service.bul = true
       
     }).catch((err) => {
-      alert(err);
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'El usuario y/o la contraseña son incorrectos.'
+      });
       
     });
     
